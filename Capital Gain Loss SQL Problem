@@ -1,0 +1,8 @@
+Select distinct stock_name, 
+sum(
+case 
+When operation ='Buy' then (-1)*price
+else 
+price 
+end ) over (partition by stock_name ) as capital_gain_loss
+From stocks
